@@ -1,0 +1,12 @@
+{
+
+  "language": {
+
+    "feature": "en-gb"
+
+  },
+  "trace": {
+    "stepDefinitionSkeletonStyle":"MethodNameUnderscores"
+  }
+
+}
