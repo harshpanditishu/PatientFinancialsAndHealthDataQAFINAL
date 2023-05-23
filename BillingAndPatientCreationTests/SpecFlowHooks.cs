@@ -20,6 +20,7 @@ namespace BillingAndPatientCreationTests
         //    _outputHelper = outputHelper;
         //}
         [BeforeTestRun]
+        
         public static void BeforeTestRun(ITestRunnerManager testRunnerManager,ITestRunner testRunner)
         {
             var location = testRunnerManager.TestAssembly.Location;
