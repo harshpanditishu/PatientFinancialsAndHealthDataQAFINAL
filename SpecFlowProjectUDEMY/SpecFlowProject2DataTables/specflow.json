@@ -6,7 +6,7 @@
 
   },
   "trace": {
-    "stepDefinitionSkeletonStyle":"MethodNameUnderscores"
+    "stepDefinitionSkeletonStyle": "MethodNameUnderscores"
   }
 
 }

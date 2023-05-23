@@ -1,8 +1,16 @@
-﻿using System;
+﻿/* The code defines a C# class `PatientVisitCreation` in the namespace
+`PatientFinancialsAndHealthData`. The class has several properties and methods for creating and
+managing patient visits, including `ConfigSetUp` for setting up user access rights, `VisitCreation`
+for creating a new patient visit, `OPDBillCalculation` for calculating the bill amount for an
+outpatient visit, and `DBPersist` for persisting visit data in a database. The class also defines
+several enums for visit types, care levels, and services. The `using` statements at the beginning of
+the code import the `System` and `System.IO` namespaces. */
+using System;
 using System.IO;
 
 namespace PatientFinancialsAndHealthData
 {
+
     public class PatientVisitCreation
     {
         private string billamount;
@@ -17,6 +25,7 @@ namespace PatientFinancialsAndHealthData
         public bool IsFullRegEP { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public string OPDBillAmt { get; set; }
 
         public PatientVisitCreation() { }
 
@@ -97,33 +106,38 @@ namespace PatientFinancialsAndHealthData
 
         public string OPDBillCalculation(string ailment,int ages)
         {
-            string billamt="0 DOLLARS";
+            MRITreatment = ailment;
+            PatientAge = ages;
+            OPDBillAmt= "0 DOLLARS";
             
-            if ((ailment =="MRI") && (ages>60) )
+            if ((MRITreatment == "MRI") && (PatientAge > 60) )
             {
                 string billamount ="600 DOLLARS";
                 Console.WriteLine($"The billed amount is {billamount}");
-                billamt = billamount;
+                OPDBillAmt = billamount;
                 
 
             }
-            else if (ailment == "MRI" && ages <= 60)
+            else if (MRITreatment == "MRI" && PatientAge <= 60)
             {
                 string billamount = "1200 DOLLARS";
                 Console.WriteLine($"The billed amount is {billamount}");
-                billamt = billamount;
+                OPDBillAmt = billamount;
                 
 
             }
 
-            return billamt;
+            return OPDBillAmt;
 
         }
 
         public bool DBPersist(VisTypes vistype, CareLevel clevel, Service service)
         {
+            CareLevel = clevel;
+            Service = service;
+            VisitType = vistype;
             var persistencestat = true;
-            Console.WriteLine($"The visit data persisted successfully in DB with following values: Visit Type: {vistype.ToString()}, Care Level:{clevel.ToString()}, Service:{service.ToString()}");
+            Console.WriteLine($"The visit data persisted successfully in DB with following values: Visit Type: {VisitType.ToString()}, Care Level:{CareLevel.ToString()}, Service:{Service.ToString()}");
             
             return persistencestat;
 

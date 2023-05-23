@@ -102,7 +102,7 @@ namespace BillingAndPatientCreationTests.Features
                         "Field",
                         "Value"});
             table1.AddRow(new string[] {
-                        "AddVisitSecRight",
+                        "AddVisitSecRightYES",
                         "TRUE"});
             table1.AddRow(new string[] {
                         "IsFullRegEP",

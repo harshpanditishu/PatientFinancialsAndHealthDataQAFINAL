@@ -8,11 +8,11 @@ Background:
 #BACKGROUND IS ALWAYS ONLY ONE FOR A SINGLE FEATURE FILE
 #Has to be mentioned immediately after FEATURE keyword and description
 Given User has the following config data  set up
-| Field            | Value    |
-| AddVisitSecRight | TRUE     |
-| IsFullRegEP      | TRUE     |
-| Username         | jongmore |
-| Password         | pass     |
+| Field               | Value    |
+| AddVisitSecRightYES | TRUE     |
+| IsFullRegEP         | TRUE     |
+| Username            | jongmore |
+| Password            | pass     |
 
 
 Rule: Validation of the Feature when visits are created via UI Only

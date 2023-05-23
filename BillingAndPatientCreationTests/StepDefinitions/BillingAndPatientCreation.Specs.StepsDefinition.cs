@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using PatientFinancialsAndHealthData;
 using TechTalk.SpecFlow.Assist;
+using TechTalk.SpecFlow.Assist.Attributes;
 using Service = PatientFinancialsAndHealthData.Service;
 
 namespace BillingAndPatientCreationTests.StepDefinitions
@@ -16,24 +17,30 @@ namespace BillingAndPatientCreationTests.StepDefinitions
 
         private readonly PatientVisitCreation _patvis=new PatientVisitCreation();
         //private  IEnumerable<PatientVisitCreate> configdata;
-        private PatientVisitCreate configdata;
+        private PatientVisitCreate? configdata;
 
-        private class PatientVisitCreate
+
+     
+            private class PatientVisitCreate
         {
+            [TableAliases("AddVisitSecRightYES")]
             public bool AddVisitSecRight { get; set; }
             public bool IsFullRegEP { get; set; }
             public string Username { get; set; }
-            public string Password { get; set; }
+            public string? Password { get; set; }
             public string ailmentservice { get; set; }
             public int age { get; set; }
 
             public string billingamount { get; set; }
+
+
         }
         [Given(@"User has the following config data  set up")]
         public void GivenUserHasTheFollowingConfigDataSetUp(Table table)
         {
             
              configdata = table.CreateInstance<PatientVisitCreate>();
+            table.CompareToInstance(configdata);
             var result=_patvis.ConfigSetUp(configdata.AddVisitSecRight, configdata.IsFullRegEP,configdata.Username,configdata.Password);
             
             result.Should().Be("success");
@@ -83,9 +90,7 @@ namespace BillingAndPatientCreationTests.StepDefinitions
         public void ThenBillingAmountIs(Table table)
         {
             var billingdata = table.CreateInstance<PatientVisitCreate>();
-
             var result = _patvis.OPDBillCalculation(configdata.ailmentservice, configdata.age);
-            
             var amount = billingdata.billingamount;
             Assert.AreEqual(amount, result);
         }
