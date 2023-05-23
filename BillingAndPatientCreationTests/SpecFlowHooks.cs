@@ -20,12 +20,24 @@ namespace BillingAndPatientCreationTests
         //    _outputHelper = outputHelper;
         //}
         [BeforeTestRun]
-        public static void BeforeTestRun()
+        public static void BeforeTestRun(ITestRunnerManager testRunnerManager,ITestRunner testRunner)
         {
-            // Example of ordering the execution of hooks
+            var location = testRunnerManager.TestAssembly.Location;
+            var threadId = testRunner.ThreadId;
 
+            Debug.WriteLine(nameof(BeforeTestRun));
+            // TODO: Initialise database here
+            // TODO: start a transaction in this hook
+            // TODO: start browser instance
+        }
 
-            //TODO: implement logic that has to run before executing each test run
+        [AfterTestRun]
+        public static void AfterTestRun()
+        {
+            // TODO: Tear down database or reset database
+            Debug.WriteLine(nameof(AfterTestRun));
+            // TODO: rollback the transaction here
+            // TODO: close browser instance
         }
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featureContext)
@@ -54,10 +66,16 @@ namespace BillingAndPatientCreationTests
         }
 
         [AfterScenario]
-        public void AfterScenario()
+        public void AfterScenario(ScenarioContext scenarioContext)
         {
             //TODO: implement logic that has to run after executing the mentioned scenario
             Debug.WriteLine(nameof(AfterScenario));
+            if (scenarioContext.TestError != null)
+            {
+                // email
+                // log to dev ops environment
+                // log to data
+            }
         }
 
         [BeforeStep]
