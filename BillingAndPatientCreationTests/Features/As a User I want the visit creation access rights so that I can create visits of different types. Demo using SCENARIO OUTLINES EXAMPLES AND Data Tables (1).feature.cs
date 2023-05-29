@@ -121,7 +121,6 @@ testRunner.Given("User has the following config data  set up", ((string)(null)),
         public virtual void AbilityForUserToCreateVisitsOfAllTypes(string testDescription, string visitType, string careLevel, string service, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "Smoke",
                     "Priority1",
                     "PlannedForAutomation",
                     "UITest"};
@@ -164,7 +163,6 @@ testRunner.Then(string.Format("the visit is registered and data persisted in the
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ability for User to create visits of all types: Ambulatory Vis Creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "As a User I want the visit creation access rights so that I can create visits of " +
             "different types. Demo using SCENARIO OUTLINES EXAMPLES AND Data Tables")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PlannedForAutomation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UITest")]
@@ -184,7 +182,6 @@ this.AbilityForUserToCreateVisitsOfAllTypes("Ambulatory Vis Creation", "Ambulato
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ability for User to create visits of all types: Inpatient Vis Creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "As a User I want the visit creation access rights so that I can create visits of " +
             "different types. Demo using SCENARIO OUTLINES EXAMPLES AND Data Tables")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PlannedForAutomation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UITest")]
@@ -204,7 +201,6 @@ this.AbilityForUserToCreateVisitsOfAllTypes("Inpatient Vis Creation", "Inpatient
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ability for User to create visits of all types: Outpatient Vis Creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "As a User I want the visit creation access rights so that I can create visits of " +
             "different types. Demo using SCENARIO OUTLINES EXAMPLES AND Data Tables")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PlannedForAutomation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UITest")]
@@ -224,7 +220,6 @@ this.AbilityForUserToCreateVisitsOfAllTypes("Outpatient Vis Creation", "Outpatie
         [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Ability for User to create visits of all types: Emergency Vis Creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "As a User I want the visit creation access rights so that I can create visits of " +
             "different types. Demo using SCENARIO OUTLINES EXAMPLES AND Data Tables")]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PlannedForAutomation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UITest")]
@@ -245,13 +240,15 @@ this.AbilityForUserToCreateVisitsOfAllTypes("Emergency Vis Creation", "Emergency
             "r than 60")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "As a User I want the visit creation access rights so that I can create visits of " +
             "different types. Demo using SCENARIO OUTLINES EXAMPLES AND Data Tables")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         public void CalculationOfBillingAmountIfAilmentServiceAvailedIsMRIAndAgeIsGreaterThan60()
         {
-            string[] tagsOfScenario = ((string[])(null));
+            string[] tagsOfScenario = new string[] {
+                    "Priority1"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Calculation of Billing amount if ailment service availed is MRI and age is greate" +
                     "r than 60", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 35
+#line 36
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -273,10 +270,10 @@ this.FeatureBackground();
                 table2.AddRow(new string[] {
                             "age",
                             "61"});
-#line 36
+#line 37
 testRunner.Given("User has availed", ((string)(null)), table2, "Given ");
 #line hidden
-#line 40
+#line 41
 testRunner.When("patient takes out the MRI", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
                 TechTalk.SpecFlow.Table table3 = new TechTalk.SpecFlow.Table(new string[] {
@@ -285,7 +282,7 @@ testRunner.When("patient takes out the MRI", ((string)(null)), ((TechTalk.SpecFl
                 table3.AddRow(new string[] {
                             "billingamount",
                             "600 DOLLARS"});
-#line 41
+#line 42
 testRunner.Then("billing amount is", ((string)(null)), table3, "Then ");
 #line hidden
             }

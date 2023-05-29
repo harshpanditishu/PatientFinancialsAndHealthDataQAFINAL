@@ -3,11 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowProjectUDEMY", "SpecFlowProjectUDEMY\SpecFlowProjectUDEMY.csproj", "{3E1509EB-A8FB-4385-924B-C5D85D41FA09}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowProject2DataTables", "SpecFlowProject2DataTables\SpecFlowProject2DataTables.csproj", "{0A8DE8ED-3C52-4389-9015-45B3E9DA81DC}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpecFlowProject3", "SpecFlowProject3\SpecFlowProject3.csproj", "{8BD23D93-BDA1-407B-B202-2E67EC895EEE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpecFlowProject3", "SpecFlowProject3\SpecFlowProject3.csproj", "{8BD23D93-BDA1-407B-B202-2E67EC895EEE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,14 +11,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3E1509EB-A8FB-4385-924B-C5D85D41FA09}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3E1509EB-A8FB-4385-924B-C5D85D41FA09}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3E1509EB-A8FB-4385-924B-C5D85D41FA09}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3E1509EB-A8FB-4385-924B-C5D85D41FA09}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0A8DE8ED-3C52-4389-9015-45B3E9DA81DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0A8DE8ED-3C52-4389-9015-45B3E9DA81DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0A8DE8ED-3C52-4389-9015-45B3E9DA81DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0A8DE8ED-3C52-4389-9015-45B3E9DA81DC}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8BD23D93-BDA1-407B-B202-2E67EC895EEE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8BD23D93-BDA1-407B-B202-2E67EC895EEE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8BD23D93-BDA1-407B-B202-2E67EC895EEE}.Release|Any CPU.ActiveCfg = Release|Any CPU

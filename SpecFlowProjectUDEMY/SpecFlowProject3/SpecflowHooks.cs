@@ -3,21 +3,26 @@ using System.Diagnostics;
 using TechTalk.SpecFlow.Infrastructure;
 using TechTalk.SpecFlow.Assist;
 using TechTalk.SpecFlow.Assist.ValueRetrievers;
+//using TestingUtils;
 
-namespace BillingAndPatientCreationTests
+namespace SpecFlowProject3
 {
 
-    
+
+
+
     [Binding]
-    public sealed class SpecFlowHooks
+    public sealed class SpecflowHooks
     {
-        //DEMO OF SPECFLOW OUTPUT API
 
         private readonly ISpecFlowOutputHelper _outputHelper;
-
-        public SpecFlowHooks(ISpecFlowOutputHelper outputHelper)
+        private readonly FeatureContext _featureContext;
+        private readonly ScenarioContext _scenarioContext;
+        public SpecflowHooks(ISpecFlowOutputHelper outputHelper, FeatureContext featureContext, ScenarioContext scenarioContext)
         {
             _outputHelper = outputHelper;
+            _featureContext = featureContext;
+            _scenarioContext = scenarioContext;
         }
         [BeforeTestRun]
         public static void BeforeTestRun(ITestRunnerManager testRunnerManager,ITestRunner testRunner)
@@ -25,9 +30,7 @@ namespace BillingAndPatientCreationTests
             var location = testRunnerManager.TestAssembly.Location;
             var threadId = testRunner.ThreadId;
 
-            Debug.WriteLine($"The test assembly under test now is : {location} with thread id : {threadId}");
             Debug.WriteLine(nameof(BeforeTestRun));
-           
             // TODO: Initialise database here
             // TODO: start a transaction in this hook
             // TODO: start browser instance
@@ -38,42 +41,39 @@ namespace BillingAndPatientCreationTests
         {
             // TODO: Tear down database or reset database
             Debug.WriteLine(nameof(AfterTestRun));
-
             // TODO: rollback the transaction here
             // TODO: close browser instance
         }
+
         [BeforeFeature]
         public static void BeforeFeature(FeatureContext featureContext)
         {
-            // Example of ordering the execution of hooks
             Debug.WriteLine($"Before Feature: Feature Title: {featureContext.FeatureInfo.Title} Desc:{featureContext.FeatureInfo.Description}");
-
-            //TODO: implement logic that has to run before executing each feature
+            // TODO: Initialise database here
+            // TODO: start a transaction in this hook
         }
 
         [AfterFeature]
         public static void AfterFeature(FeatureContext featureContext)
         {
-            //Debug.WriteLine($"After Feature: Feature Title: {featureContext.FeatureInfo.Title} Desc:{featureContext.FeatureInfo.Description}");
+            Debug.WriteLine($"After Feature: Feature Title: {featureContext.FeatureInfo.Title} Desc:{featureContext.FeatureInfo.Description}");
+            // TODO: Tear down database or reset database
+            // TODO: rollback the transaction here
         }
 
         [BeforeScenario]
-        public void BeforeScenarioWithTag(ScenarioContext scenarioContext)
+        public void BeforeScenario(ScenarioContext scenarioContext)
         {
-
-            _outputHelper.WriteLine($"Before Scenario: Title:- {scenarioContext.ScenarioInfo.Title}");
-            _outputHelper.WriteLine($"Status:{scenarioContext.ScenarioExecutionStatus.ToString()}");
-            //Debug.WriteLine($"Before Scenario: Title {scenarioContext.ScenarioInfo.Title}");
-            //Debug.WriteLine($"Status:{scenarioContext.ScenarioExecutionStatus.ToString()}");
-            //TODO: implement logic that has to run before executing each scenario
+            _outputHelper.WriteLine($"Before Scenario: Title {scenarioContext.ScenarioInfo.Title}");
+            _outputHelper.WriteLine($"Status:{scenarioContext.ScenarioExecutionStatus}");
         }
 
         [AfterScenario]
-        public void AfterScenario(ScenarioContext scenarioContext)
+        public void AfterScenario()
         {
-            //TODO: implement logic that has to run after executing the mentioned scenario
-            //Debug.WriteLine(nameof(AfterScenario));
-            if (scenarioContext.TestError != null)
+            Debug.WriteLine(nameof(AfterScenario));
+
+            if (_scenarioContext.TestError != null)
             {
                 // email
                 // log to dev ops environment
@@ -81,23 +81,32 @@ namespace BillingAndPatientCreationTests
             }
         }
 
+
+        [BeforeScenarioBlock]
+        public void BeforeScenarioBlock()
+        {
+            Debug.WriteLine(nameof(BeforeScenarioBlock));
+        }
+
+        [AfterScenarioBlock]
+        public void AfterScenarioBlock()
+        {
+            Debug.WriteLine(nameof(AfterScenarioBlock));
+        }
+
         [BeforeStep]
         public void BeforeStep(ScenarioContext scenarioContext)
         {
-            Debug.WriteLine($"Text:{scenarioContext.StepContext.StepInfo.Text}");
-
-            //DEMO OF OUTHELPER API 
-            //GIVES YOU OUTPUT IN THE STANDARD OUTPUT SECTION AND NOT IN THE DEBUG TRACE.
             _outputHelper.WriteLine($"Text:{scenarioContext.StepContext.StepInfo.Text}");
-            _outputHelper.WriteLine($"Status:{scenarioContext.StepContext.Status.ToString()}");
+            _outputHelper.WriteLine($"Status:{scenarioContext.StepContext.Status}");
             _outputHelper.WriteLine(nameof(BeforeStep));
-            
+            // TODO: use specflow logging api to output step
         }
 
         [AfterStep]
         public void AfterStep()
         {
-            //TODO: implement logic that has to run after executing the mentioned step
+            Debug.WriteLine(nameof(AfterStep));
         }
     }
 }

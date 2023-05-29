@@ -93,13 +93,13 @@ namespace BillingAndPatientCreationTests.Features
         }
         
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
-        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can create a visit of type Ambulatory")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("User can create a visit of type Ambulatory with future admit dates")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Visit Creation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Priority1")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("PlannedForAutomation")]
         [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("UITest")]
-        public void UserCanCreateAVisitOfTypeAmbulatory()
+        public void UserCanCreateAVisitOfTypeAmbulatoryWithFutureAdmitDates()
         {
             string[] tagsOfScenario = new string[] {
                     "Smoke",
@@ -107,7 +107,7 @@ namespace BillingAndPatientCreationTests.Features
                     "PlannedForAutomation",
                     "UITest"};
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can create a visit of type Ambulatory", null, tagsOfScenario, argumentsOfScenario, featureTags);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("User can create a visit of type Ambulatory with future admit dates", null, tagsOfScenario, argumentsOfScenario, featureTags);
 #line 10
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
@@ -118,15 +118,91 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
+                TechTalk.SpecFlow.Table table7 = new TechTalk.SpecFlow.Table(new string[] {
+                            "Field",
+                            "Value"});
+                table7.AddRow(new string[] {
+                            "CareLevel",
+                            "Acute"});
+                table7.AddRow(new string[] {
+                            "VisitType",
+                            "Ambulatory"});
 #line 11
-testRunner.Given("User has the security right \"CreateVisit\" to create a visit", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+testRunner.Given("User has the security right \"CreateVisit\" to create a visit and visitadmitdate as" +
+                        " \'01/12/2022\'", ((string)(null)), table7, "Given ");
 #line hidden
-#line 12
+#line 15
 testRunner.When("User creates a patient/visit in ER with the visit type as Ambulatory", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 13
+#line 16
 testRunner.Then("the Ambulatory visit is successfully registered in ER with the visit data getting" +
                         " persisted in the CVClient table", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validate auto discharge when discharge date is a future date")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Visit Creation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
+        public void ValidateAutoDischargeWhenDischargeDateIsAFutureDate()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Smoke"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate auto discharge when discharge date is a future date", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 20
+  this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 21
+    testRunner.Given("I have a visit which has discharge date set in \'3 days time\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 22
+    testRunner.When("I initiate the auto discharge proess or service OR when the process is running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 23
+    testRunner.Then("the the visit should be discharged on that date", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestMethodAttribute()]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.DescriptionAttribute("Validate auto discharge when discharge date is a past date")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestPropertyAttribute("FeatureTitle", "Visit Creation")]
+        [Microsoft.VisualStudio.TestTools.UnitTesting.TestCategoryAttribute("Smoke")]
+        public void ValidateAutoDischargeWhenDischargeDateIsAPastDate()
+        {
+            string[] tagsOfScenario = new string[] {
+                    "Smoke"};
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Validate auto discharge when discharge date is a past date", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 27
+   this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 28
+    testRunner.Given("I have a visit which has discharge date set  \'3 days ago\'", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 29
+    testRunner.When("I initiate the auto discharge proess or service OR when the process is running", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 30
+    testRunner.Then("the the visit should be discharged on that date", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

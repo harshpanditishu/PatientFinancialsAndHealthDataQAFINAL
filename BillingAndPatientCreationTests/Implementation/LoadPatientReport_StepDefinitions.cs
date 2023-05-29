@@ -1,7 +1,9 @@
 using System;
+using System.Diagnostics;
 using System.Xml.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+
 
 namespace BillingAndPatientCreationTests.StepDefinitions
 {
@@ -31,7 +33,7 @@ namespace BillingAndPatientCreationTests.StepDefinitions
 
             foreach (PatientReportCreate item in ptreport)
             {
-                Console.WriteLine(item);
+                Debug.WriteLine(item.Fname);
             }
         }
 

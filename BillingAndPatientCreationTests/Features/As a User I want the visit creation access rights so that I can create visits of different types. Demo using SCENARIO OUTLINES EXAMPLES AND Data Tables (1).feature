@@ -17,7 +17,7 @@ Given User has the following config data  set up
 
 Rule: Validation of the Feature when visits are created via UI Only
 To test all visit types can be created successfully in the ER application
-@Smoke
+
 @Priority1
 @PlannedForAutomation
 @UITest
@@ -32,6 +32,7 @@ Examples:
 | Outpatient Vis Creation | Outpatient | cl1        | CTScan      |
 | Emergency Vis Creation  | Emergency  | critical   | dialysis    |
 
+@Priority1
 Scenario: Calculation of Billing amount if ailment service availed is MRI and age is greater than 60
 Given User has availed 
 | Field          | Value |
