@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Xml.Linq;
 using TechTalk.SpecFlow;
 using TechTalk.SpecFlow.Assist;
+using TechTalk.SpecFlow.Assist.Attributes;
 
 
 namespace BillingAndPatientCreationTests.StepDefinitions
@@ -13,6 +14,7 @@ namespace BillingAndPatientCreationTests.StepDefinitions
         private IEnumerable<PatientReportCreate> ptreport;
         private class PatientReportCreate
         {
+            [TableAliases("Firstname")]
             public string Fname { get; set; }
             public string MName { get; set; }
 

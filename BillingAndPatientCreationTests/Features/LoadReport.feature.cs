@@ -114,7 +114,7 @@ this.ScenarioInitialize(scenarioInfo);
             {
                 this.ScenarioStart();
                 TechTalk.SpecFlow.Table table6 = new TechTalk.SpecFlow.Table(new string[] {
-                            "Fname",
+                            "Firstname",
                             "MName",
                             "Age",
                             "Insurance",
