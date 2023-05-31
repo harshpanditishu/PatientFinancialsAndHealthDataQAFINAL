@@ -77,7 +77,7 @@ namespace PatientFinancialsAndHealthData
                 else
                 {
                     Console.WriteLine("Invalid value for Care Level");
-                    throw new InvalidDataException();
+                    throw new InvalidOperationException();
                 }
                 if (service==Service.ICU|| service == Service.CTScan || service == Service.GenMedicine || service == Service.dialysis)
                 {
