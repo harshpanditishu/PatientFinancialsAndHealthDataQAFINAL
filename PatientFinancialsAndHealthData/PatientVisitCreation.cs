@@ -62,7 +62,7 @@ namespace PatientFinancialsAndHealthData
             var result = true;
             try
             {
-                if (vtype == VisTypes.Inpatient || vtype == VisTypes.Outpatient || vtype == VisTypes.Ambulatory)
+                if (vtype == VisTypes.Inpatient || vtype == VisTypes.Outpatient || vtype == VisTypes.Ambulatory || vtype == VisTypes.Emergency)
                 {
                     Console.WriteLine("Visit Type successfuly selected");
                 }
@@ -70,7 +70,7 @@ namespace PatientFinancialsAndHealthData
                     Console.WriteLine("Invalid value for Visit Type");
                     throw new InvalidDataException(); 
                 }
-                if (careLevel==CareLevel.Acute || careLevel == CareLevel.Ambulatory|| careLevel == CareLevel.cl1)
+                if (careLevel==CareLevel.Acute || careLevel == CareLevel.Ambulatory|| careLevel == CareLevel.cl1 || careLevel == CareLevel.critical)
                 {
                     Console.WriteLine("Care Level successfuly selected");
                 }
@@ -79,7 +79,7 @@ namespace PatientFinancialsAndHealthData
                     Console.WriteLine("Invalid value for Care Level");
                     throw new InvalidDataException();
                 }
-                if (service==Service.ICU|| service == Service.CTScan || service == Service.GenMedicine)
+                if (service==Service.ICU|| service == Service.CTScan || service == Service.GenMedicine || service == Service.dialysis)
                 {
                     Console.WriteLine("Service successfully created");
 

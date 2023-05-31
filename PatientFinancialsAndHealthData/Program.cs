@@ -10,19 +10,22 @@ namespace PatientFinancialsAndHealthData
     {
         Inpatient,
         Outpatient,
-        Ambulatory
+        Ambulatory,
+        Emergency
     }
     public enum CareLevel
     {
         Ambulatory,
         Acute,
-        cl1
+        cl1,
+        critical
     }
     public enum Service
     {
         ICU,
         GenMedicine,
-        CTScan
+        CTScan,
+        dialysis
     }
     internal class Program
     {
